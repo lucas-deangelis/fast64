@@ -32,22 +32,7 @@ void p(const char* s) {
 
 int main() {
     const char* in1 = "foobarfoobar";
-    const char* in2 = "foobarfoobar2";
     char* out1 = malloc(20);
-    char* out2 = malloc(20);
-    size_t* outlen1 = 0;
-    size_t* outlen2 = 0;
-	p(in1);
-	p(in2);
-	p(out1);
-	p(out2);
-    base64_encode(in1, strlen(in1), out1, outlen1, 0);
-    base64_encode(in2, strlen(in2), out2, outlen2, 0);
-	puts("finished encoding");
-	printf("%ln\n", outlen1);
-	printf("%ln\n", outlen2);
-	p(in1);
-	p(in2);
-	s(out1, *outlen1);
-	s(out2, *outlen2);
+    size_t outlen1 = 0;
+    base64_encode(in1, sizeof(in1) - 1, out1, &outlen1, 0);
 }
